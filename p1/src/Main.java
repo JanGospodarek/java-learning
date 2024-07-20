@@ -42,7 +42,6 @@ class Board {
     }
 
     public boolean checkIsWin() {
-//        Check rows and columns
         for (int i = 0; i < 3; i++) {
             boolean isSameR = true;
             boolean isSameC = true;
@@ -55,7 +54,6 @@ class Board {
             if (isSameR || isSameC)
                 return true;
         }
-//        Check diagonals
         boolean isSameD1 = true;
         boolean isSameD2 = true;
         for (int i = 0; i < 3; i++) {
