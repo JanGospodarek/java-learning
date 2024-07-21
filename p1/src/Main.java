@@ -74,7 +74,7 @@ public class Main {
     public static void main(String[] args) {
         Board board = new Board();
         while (isRunning) {
-            int[] cords = currentPlayer == Player.X ? readPlayerInput() : readComputerInput(board);
+            int[] cords = currentPlayer == Player.X ? readPlayerInput() : readComputerInput(board.board);
             boolean isPlaced = board.placeMove(cords[0], cords[1], currentPlayer);
             if (isPlaced) {
                 boolean isWinner = board.checkIsWin();
@@ -106,9 +106,9 @@ public class Main {
 
     }
 
-    static int[] readComputerInput(Board board) {
+    static int[] readComputerInput(char[][] board) {
         int[] cords = getRandomCords();
-        while (board.board[cords[0]][cords[1]] != '-')
+        while (board[cords[0]][cords[1]] != '-')
             cords = getRandomCords();
         return cords;
     }
