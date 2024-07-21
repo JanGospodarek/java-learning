@@ -6,7 +6,7 @@ enum Player {
 }
 
 class Board {
-    public char[][] board = new char[3][3];
+    private final char[][] board = new char[3][3];
 
     Board() {
         initBoard();
@@ -64,6 +64,10 @@ class Board {
         }
         return isSameD1 || isSameD2;
     }
+
+    public char[][] getBoard() {
+        return board.clone();
+    }
 }
 
 public class Main {
@@ -74,7 +78,7 @@ public class Main {
     public static void main(String[] args) {
         Board board = new Board();
         while (isRunning) {
-            int[] cords = currentPlayer == Player.X ? readPlayerInput() : readComputerInput(board.board);
+            int[] cords = currentPlayer == Player.X ? readPlayerInput() : readComputerInput(board.getBoard());
             boolean isPlaced = board.placeMove(cords[0], cords[1], currentPlayer);
             if (isPlaced) {
                 boolean isWinner = board.checkIsWin();
